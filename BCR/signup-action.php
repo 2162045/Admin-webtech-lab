@@ -10,14 +10,15 @@
 	$conn = new mysqli($servername, $username, $password, $dbname);
 
 
+
 if(isset($_SESSION['id_no'])){ 
-    header("location:index.php");
+    header("location:admin.php");
 }else if(isset($_POST['register'])){
 
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
     $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $password_hash= mysqli_real_escape_string($conn, $_POST['password']);
 
     $contactNumber = mysqli_real_escape_string($conn,$_POST['contactNumber']);
 
@@ -25,7 +26,7 @@ if(isset($_SESSION['id_no'])){
 
 
 
-    $clientReg = "INSERT INTO admin(firstName,lastName,email,password,contactNumber,address) VALUES ('$firstName','$lastName','$email','$password','$contactNumber','$address')";
+    $clientReg = "INSERT INTO admin(firstName,lastName,email,password,contactNumber,address) VALUES ('$firstName','$lastName','$email','$password_hash','$contactNumber','$address')";
 
     $allClient = mysqli_query($conn,"SELECT * FROM admin WHERE email = '$email'");
 

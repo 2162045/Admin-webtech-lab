@@ -5,7 +5,7 @@ if(isset($_POST["action"])){
 
     if ($_POST["action"] == 'fetch') {
         $output = '';
-        $query = "SELECT * FROM admin";
+        $query = "SELECT * FROM admin ORDER BY id_no";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -21,6 +21,7 @@ if(isset($_POST["action"])){
                 <td>Role</td>
 				<td>Status</td>
 				<td>Enable/Disable</td>
+                <td>Action</td>
                 
 			</tr>
 
@@ -43,8 +44,10 @@ if(isset($_POST["action"])){
                 <td>'.$row["role"].'</td>
 				<td>'.$status.'</td>
 				<td><button type="button" name="action" class="btn btn-info btn-xs action" data-id="'.$row["id_no"].'" data-status='.$row["status"].'>Change Status</button>
-
-
+<td>
+                <a href="edit.php?id_no=$row[id_no]">EDIT</a> &nbsp
+                 <a href="delete.php?id_no=$row[id_no]">DELETE</a>
+                 </td>
 			</tr>
 			';
         }

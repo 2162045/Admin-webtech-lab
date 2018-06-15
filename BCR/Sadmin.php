@@ -10,8 +10,8 @@ if(isset($_POST["login"])){
         $message = "<div class='alert alert-danger'>Both Fields are required</div>";
     }else{
         $query = "
-              SELECT * FROM admin
-              WHERE email = email
+            SELECT * FROM admin
+              WHERE email = email and role='SuperAdmin'
               ";
         $statement = $connect->prepare($query);
         $statement->execute(
@@ -152,43 +152,43 @@ if(isset($_POST["login"])){
         </section>
     </body>
     <footer style="background-color:gray;">
-    <div class="row">
-        <div class="col-sm-8">
-            <iframe src="https://www.google.com/maps/embed?earch/car+rental+in+baguio/@16.4067093,120.5849192,15z?authuser=0" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <div class="col-sm-4" id="contact2">
-            <h3>Baguio Car Rental</h3>
-            <hr align="left" width="50%">
-            <h4 class="pt-2">Most trusted company</h4> <i class="fas fa-globe" style="color:#000"></i> Victory Liner Baguio Passenger Centre, Utility Rd., Marcoville, Baguio City, Utility Rd, Baguio, 2600 Benguet
-            <br>
-            <h4 class="pt-2">Contact</h4> <i class="fas fa-phone" style="color:#000"></i> <a style="color:white href=" tel:+ ">(074) 442 4018 </a>
+        <div class="row">
+            <div class="col-sm-8">
+                <iframe src="https://www.google.com/maps/embed?earch/car+rental+in+baguio/@16.4067093,120.5849192,15z?authuser=0" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            <div class="col-sm-4" id="contact2">
+                <h3>Baguio Car Rental</h3>
+                <hr align="left" width="50%">
+                <h4 class="pt-2">Most trusted company</h4> <i class="fas fa-globe" style="color:#000"></i> Victory Liner Baguio Passenger Centre, Utility Rd., Marcoville, Baguio City, Utility Rd, Baguio, 2600 Benguet
+                <br>
+                <h4 class="pt-2">Contact</h4> <i class="fas fa-phone" style="color:#000"></i> <a style="color:white href=" tel:+ ">(074) 442 4018 </a>
                     <br> <i class="fab fa-road " style="color:#000 "></i><a style="color:white href=" "> Closed. Opens at 9:00 AM Claim this business</a>
-            <br>
-            <h4 class="pt-2 " style="color:#000; ">Email</h4> <i class="fa fa-envelope " style="color:#000; "></i> <a style="color:white" href=" ">bcr.php</a>
-            <br> </div>
-    </div>
-</footer>
-                    <script src="assets/js/jquery.js "></script>
-                    <script src="assets/js/bootstrap.min.js "></script>
-                    <script src="assets/js/jquery-ui-1.9.2.custom.min.js "></script>
-                    <script src="assets/js/jquery.ui.touch-punch.min.js "></script>
-                    <script class="include " type="text/javascript " src="assets/js/jquery.dcjqaccordion.2.7.js "></script>
-                    <script src="assets/js/jquery.scrollTo.min.js "></script>
-                    <script src="assets/js/jquery.nicescroll.js " type="text/javascript "></script>
-                    <!--common script for all pages-->
-                    <script src="assets/js/common-scripts.js "></script>
-                    <!--script for this page-->
-                    <script>
-                    //custom select box
-                    $(function () {
-                    $('select.styled').customSelect();
-                    });
-                    </script>
-                    <script type="text/javascript " src="assets/js/jquery.backstretch.min.js "></script>
-                    <script>
-                    $.backstretch("assets/img/background.jpg ", {
-                    speed: 500
-                    });
-                    </script>
+                <br>
+                <h4 class="pt-2 " style="color:#000; ">Email</h4> <i class="fa fa-envelope " style="color:#000; "></i> <a style="color:white" href=" ">bcr.php</a>
+                <br> </div>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.js "></script>
+    <script src="assets/js/bootstrap.min.js "></script>
+    <script src="assets/js/jquery-ui-1.9.2.custom.min.js "></script>
+    <script src="assets/js/jquery.ui.touch-punch.min.js "></script>
+    <script class="include " type="text/javascript " src="assets/js/jquery.dcjqaccordion.2.7.js "></script>
+    <script src="assets/js/jquery.scrollTo.min.js "></script>
+    <script src="assets/js/jquery.nicescroll.js " type="text/javascript "></script>
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js "></script>
+    <!--script for this page-->
+    <script>
+        //custom select box
+        $(function () {
+            $('select.styled').customSelect();
+        });
+    </script>
+    <script type="text/javascript " src="assets/js/jquery.backstretch.min.js "></script>
+    <script>
+        $.backstretch("assets/img/background.jpg ", {
+            speed: 500
+        });
+    </script>
 
-                    </html>
+    </html>

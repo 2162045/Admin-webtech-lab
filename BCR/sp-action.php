@@ -5,7 +5,7 @@ if(isset($_POST["action"])){
 
     if ($_POST["action"] == 'fetch') {
         $output = '';
-        $query = "SELECT * FROM service_provider";
+        $query = "SELECT * FROM service_provider order by id";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
