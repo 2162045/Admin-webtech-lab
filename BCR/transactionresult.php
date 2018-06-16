@@ -35,7 +35,7 @@ include("connect.php"); //search code
                         </ul>
                     </li>
                     <li><a href="transaction.php">Transaction</a></li>
-                    <li><a href="transaction.php"><span class="glyphicon glyphicon-envelope"></span> Notification</a> </ul>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
@@ -52,12 +52,13 @@ include("connect.php"); //search code
                         <table style="width:10cm;" class="input-group">
                             <tr>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Search" name="rent_id"> </td>
+                                    <input type="text" class="form-control" placeholder="Search" name="rent_id" required> </td>
                                 <td>
                                     <input class="btn btn-default" type="submit" name="submit"> </td>
                             </tr>
                         </table>
                     </form>
+                    <br>
                     <div class="panel panel-default">
                         <div class="panel-heading ">Service Provider Details</div>
                         <?php
@@ -75,8 +76,8 @@ include("connect.php"); //search code
     cars.plate_number,
     rent.request,
     cars.date1,
-    cars.date2,
-    cars.price
+    cars.date2
+
 FROM
     cars
         JOIN
@@ -99,7 +100,7 @@ FROM
 				<td>Request</td>
                 <td>Date Returned</td>
 				<td>Date Borrowed</td>
-				<td>Price</td>
+			
              
 			</tr>
 				";
@@ -113,7 +114,7 @@ FROM
                     $request=$row['request'];
                     $date1=$row['date1'];
                     $date2=$row['date2'];
-                    $price =$row['price'];
+                 
 
 
                                     echo"
@@ -127,7 +128,7 @@ FROM
                     <td>$request</td>
 					<td>$date1</td>	
                     <td>$date2</td
-					<td>$price</td>
+				
 
 
                 </tr>    

@@ -23,28 +23,29 @@
             <div class="container-fluid">
                 <div class="navbar-header"> <a class="navbar-brand" href="home.php">BaguioCarRental</a> </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="home.php">Home</a></li>
+                    <li class="active"><a href="../admin/home.php">Home</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin.php">Admins</a></li>
-                            <li><a href="client.php">Clients</a></li>
-                            <li><a href="sp.php">Service Providers</a></li>
+                            <li><a href="../admin/admin.php">Admins</a></li>
+                            <li><a href="../admin/client.php">Clients</a></li>
+                            <li><a href="../admin/sp.php">Service Providers</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Requests<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="adminreq.php">Admins</a></li>
-                            <li><a href="clientreq.php">Clients</a></li>
-                            <li><a href="spreq.php">Service Providers</a></li>
+                            <li><a href="../admin/adminreq.php">Admins</a></li>
+                            <li><a href="../admin/clientreq.php">Clients</a></li>
+                            <li><a href="../admin/spreq.php">Service Providers</a></li>
                         </ul>
                     </li>
-                    <li><a href="transaction.php">Transaction</a></li>
+                    <li><a href="../admin/transaction.php">Transaction</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li><a href="../admin/logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
+        <br />
         <div id="wrapper">
             <div class="container">
                 <div class="page-header">

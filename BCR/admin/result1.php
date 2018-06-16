@@ -19,28 +19,29 @@ include("connect.php"); //search code
             <div class="container-fluid">
                 <div class="navbar-header"> <a class="navbar-brand" href="home.php">BaguioCarRental</a> </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="home.php">Home</a></li>
+                    <li class="active"><a href="../admin/home.php">Home</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin.php">Admins</a></li>
-                            <li><a href="client.php">Clients</a></li>
-                            <li><a href="sp.php">Service Providers</a></li>
+                            <li><a href="../admin/admin.php">Admins</a></li>
+                            <li><a href="../admin/client.php">Clients</a></li>
+                            <li><a href="../admin/sp.php">Service Providers</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Requests<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="adminreq.php">Admins</a></li>
-                            <li><a href="clientreq.php">Clients</a></li>
-                            <li><a href="spreq.php">Service Providers</a></li>
+                            <li><a href="../admin/adminreq.php">Admins</a></li>
+                            <li><a href="../admin/clientreq.php">Clients</a></li>
+                            <li><a href="../admin/spreq.php">Service Providers</a></li>
                         </ul>
                     </li>
-                    <li><a href="transaction.php">Transaction</a></li>
+                    <li><a href="../admin/transaction.php">Transaction</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li><a href="../admin/logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
+        <br />
         <br />
         <div class="container">
             <h2 style="color:white;margin-left:30px;" align="center">Admin Accounts Monitoring</h2>
@@ -68,7 +69,7 @@ include("connect.php"); //search code
      if($_REQUEST['submit']){
 $firstName = $_POST['firstName'];
 
-    $sql =mysqli_query($conn,"SELECT * FROM admin WHERE firstName LIKE '%$firstName%' ORDER BY id_no");
+    $sql =mysqli_query($conn,"SELECT * FROM admin WHERE firstName LIKE '%$firstName%' and  request='Pending' ORDER BY id_no");
       if($sql->num_rows > '0'){
             
 			echo "<table class='table table-striped table-bordered table-hover warning id='dataTables-example';>";
@@ -85,7 +86,7 @@ $firstName = $_POST['firstName'];
 				<td>Address</td>
                 <td>Role</td>
                 	<td>Status</td>
-			
+				<td>Request</td>
 				<td></td>
 			</tr>
 				";
@@ -99,8 +100,8 @@ $firstName = $_POST['firstName'];
                     $address=$row['address'];
                     $role=$row['role'];
                     $status=$row['status'];
+                    $request=$row['request'];
                  
-                
                 
                 echo"
                 <tr>
@@ -112,8 +113,15 @@ $firstName = $_POST['firstName'];
                     <td>$contactNumber</td>
                     <td>$address</td>
 					<td>$role</td>	
-					<td>$status</td>
-                   
+					<td>$request</td>
+                    <td><form action='changeStatus.php' method='POST'>
+                    <button class='btn-primary' value='$id_no,approved' name='approve'>Approved</button>
+                    <button class='btn-danger' value='$id_no,blocked' name='block'>Block</button>
+                    </form>
+                    </td>
+                  
+                    </form>
+                    </td>
                     
                 </tr>    
                 

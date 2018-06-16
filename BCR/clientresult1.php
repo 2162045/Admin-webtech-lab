@@ -35,7 +35,7 @@ include("connect.php"); //search code
                         </ul>
                     </li>
                     <li><a href="transaction.php">Transaction</a></li>
-                    <li><a href="transaction.php"><span class="glyphicon glyphicon-envelope"></span> Notification</a> </ul>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
@@ -52,7 +52,7 @@ include("connect.php"); //search code
                         <table style="width:10cm;" class="input-group">
                             <tr>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Search" name="user_name"> </td>
+                                    <input type="text" class="form-control" placeholder="Search" name="user_name" required> </td>
                                 <td>
                                     <input class="btn btn-default" type="submit" name="submit"> </td>
                             </tr>

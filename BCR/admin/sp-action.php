@@ -5,7 +5,7 @@ if(isset($_POST["action"])){
 
     if ($_POST["action"] == 'fetch') {
         $output = '';
-        $query = "SELECT * FROM admin ORDER BY id_no";
+        $query = "SELECT * FROM service_provider order by id";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -14,14 +14,13 @@ if(isset($_POST["action"])){
 
             <tr>
 				<td>ID</td>
-				<td>Name</td>
+                <td>Username</td>
                 <td>Email</td>
+				<td>Name</td>
                 <td>Contact Number</td>
 				<td>Address</td>
-                <td>Role</td>
 				<td>Status</td>
 				<td>Enable/Disable</td>
-               
                 
 			</tr>
 
@@ -36,14 +35,15 @@ if(isset($_POST["action"])){
             }
             $output .= '
 			<tr>
-				<td>'.$row["id_no"].'</td>
-                <td>'.$row["firstName"].' '.$row["lastName"].'</td>
+				<td>'.$row["id"].'</td>
+                <td>'.$row["username"].'</td>
                 <td>'.$row["email"].'</td>
-                <td>'.$row["contactNumber"].'</td>
+                <td>'.$row["first_name"].' '.$row["last_name"].'</td>             
+                <td>'.$row["contact"].'</td>
                 <td>'.$row["address"].'</td>
-                <td>'.$row["role"].'</td>
 				<td>'.$status.'</td>
-				<td><button type="button" name="action" class="btn btn-info btn-xs action" data-id="'.$row["id_no"].'" data-status='.$row["status"].'>Change Status</button></td>
+				<td><button type="button" name="action" class="btn btn-info btn-xs action" data-id="'.$row["id"].'" data-status='.$row["status"].'>Change Status</button>
+
 
 			</tr>
 			';
@@ -59,12 +59,12 @@ if(isset($_POST["action"])){
             $status='Active';
         }
 
-        $query = 'UPDATE admin SET status = :status WHERE id_no= :id_no';
+        $query = 'UPDATE service_provider SET status = :status WHERE id= :id';
         $statement = $connect->prepare($query);
         $statement->execute(
             array(
                 ':status'  => $status,
-                ':id_no'   => $_POST['id']
+                ':id'   => $_POST['id']
 
             )
         );

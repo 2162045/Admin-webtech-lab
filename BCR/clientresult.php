@@ -35,7 +35,7 @@ include("connect.php"); //search code
                         </ul>
                     </li>
                     <li><a href="transaction.php">Transaction</a></li>
-                    <li><a href="transaction.php"><span class="glyphicon glyphicon-envelope"></span> Notification</a> </ul>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>

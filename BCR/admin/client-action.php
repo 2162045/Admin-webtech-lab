@@ -5,7 +5,7 @@ if(isset($_POST["action"])){
 
     if ($_POST["action"] == 'fetch') {
         $output = '';
-        $query = "SELECT * FROM admin ORDER BY id_no";
+        $query = "SELECT * FROM user order by id_no";
         $statement = $connect->prepare($query);
         $statement->execute();
         $result = $statement->fetchAll();
@@ -14,14 +14,13 @@ if(isset($_POST["action"])){
 
             <tr>
 				<td>ID</td>
+                <td>User Name</td>
 				<td>Name</td>
                 <td>Email</td>
                 <td>Contact Number</td>
 				<td>Address</td>
-                <td>Role</td>
 				<td>Status</td>
 				<td>Enable/Disable</td>
-               
                 
 			</tr>
 
@@ -37,13 +36,15 @@ if(isset($_POST["action"])){
             $output .= '
 			<tr>
 				<td>'.$row["id_no"].'</td>
-                <td>'.$row["firstName"].' '.$row["lastName"].'</td>
+                <td>'.$row["user_name"].'</td>
+                <td>'.$row["firstname"].' '.$row["lastname"].'</td>
                 <td>'.$row["email"].'</td>
-                <td>'.$row["contactNumber"].'</td>
+                <td>'.$row["contact_num"].'</td>
                 <td>'.$row["address"].'</td>
-                <td>'.$row["role"].'</td>
+                
 				<td>'.$status.'</td>
-				<td><button type="button" name="action" class="btn btn-info btn-xs action" data-id="'.$row["id_no"].'" data-status='.$row["status"].'>Change Status</button></td>
+				<td><button type="button" name="action" class="btn btn-info btn-xs action" data-id="'.$row["id_no"].'" data-status='.$row["status"].'>Change Status</button>
+
 
 			</tr>
 			';
@@ -59,7 +60,7 @@ if(isset($_POST["action"])){
             $status='Active';
         }
 
-        $query = 'UPDATE admin SET status = :status WHERE id_no= :id_no';
+        $query = 'UPDATE user SET status = :status WHERE id_no= :id_no';
         $statement = $connect->prepare($query);
         $statement->execute(
             array(

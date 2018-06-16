@@ -1,16 +1,12 @@
 <?php
-	ob_start();
-	session_start();
-	require('connect.php');
-
-
-	
+include("connect.php"); //search code
+//error_reporting(0);
 ?>
     <!DOCTYPE html>
     <html>
 
     <head>
-        <title> Client Account Monitoring</title>
+        <title>Client Account Monitoring</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,57 +19,61 @@
             <div class="container-fluid">
                 <div class="navbar-header"> <a class="navbar-brand" href="home.php">BaguioCarRental</a> </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="home.php">Home</a></li>
+                    <li class="active"><a href="../admin/home.php">Home</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin.php">Admins</a></li>
-                            <li><a href="client.php">Clients</a></li>
-                            <li><a href="sp.php">Service Providers</a></li>
+                            <li><a href="../admin/admin.php">Admins</a></li>
+                            <li><a href="../admin/client.php">Clients</a></li>
+                            <li><a href="../admin/sp.php">Service Providers</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Requests<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="adminreq.php">Admins</a></li>
-                            <li><a href="clientreq.php">Clients</a></li>
-                            <li><a href="spreq.php">Service Providers</a></li>
+                            <li><a href="../admin/adminreq.php">Admins</a></li>
+                            <li><a href="../admin/clientreq.php">Clients</a></li>
+                            <li><a href="../admin/spreq.php">Service Providers</a></li>
                         </ul>
                     </li>
-                    <li><a href="transaction.php">Transaction</a></li>
+                    <li><a href="../admin/transaction.php">Transaction</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li><a href="../admin/logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
-        <div id="wrapper">
-            <div class="container">
-                <div class="page-header">
-                    <br>
-                    <h2 style="color:white;margin-left:30px;" align="center">Approval of Request</h2> </div>
-                <form action="clientresult1.php" method="POST">
-                    <table style="width:10cm;" class="input-group">
-                        <tr>
-                            <td>
-                                <input type="text" class="form-control" placeholder="Search" name="user_name" required> </td>
-                            <td>
-                                <input class="btn btn-default" type="submit" name="submit"> </td>
-                        </tr>
-                    </table>
-                </form>
-                <?php
-                
-                 if($_REQUEST['submit']){
-                            $username = $_POST['username'];
-        $sql = mysqli_query($conn,"SELECT * from user WHERE request='Pending' order by id_no");
-        
-        if($sql->num_rows > '0'){
-            
-			echo "<table class='table table-striped table-bordered table-hover id='dataTables-example';>";
- 			
-			echo "
-			
-                
-            <tr>
+        <br />
+        <div class="container">
+            <h2 style="color:white;margin-left:30px;" align="center">Client Accounts Monitoring</h2>
+            <br />
+            <div class="row">
+                <table class="table table-striped table-bordered">
+                    <br />
+                    <form action="clientresult1.php" method="POST">
+                        <table style="width:10cm;" class="input-group">
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Search" name="user_name" required> </td>
+                                <td>
+                                    <input class="btn btn-default" type="submit" name="submit"> </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <?php
+
+
+
+                        if($_REQUEST['submit']){
+                            $user_name = $_POST['user_name'];
+
+                            $sql =mysqli_query($conn,"SELECT * FROM user WHERE user_name LIKE '%$user_name%' and  request='Pending' order by id_no");
+                            if($sql->num_rows > '0'){
+
+                                echo "<table class='table table-striped table-bordered table-hover warning id='dataTables-example';>";
+
+                                echo "
+
+
+           <tr>
 				<td>ID</td>
 				<td>Username</td>
   
@@ -117,19 +117,16 @@
                     </form>
                     </td>
                     
-                </tr>    
-                
-                
-                
-                
+                </tr>   
+
+
                 ";
-            }
-        }
-                 }
-                
-                                        ?>
-                    <script src="assets/jquery-1.11.3-jquery.min.js"></script>
-                    <script src="assets/js/bootstrap.min.js"></script>
+                                }
+                            }
+                        }
+                        ?> </table>
+            </div>
+        </div>
     </body>
 
     </html>

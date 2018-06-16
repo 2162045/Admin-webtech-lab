@@ -11,7 +11,7 @@
          }else{
               $query = "
               SELECT * FROM admin
-              WHERE email = email and role='SuperAdmin'
+              WHERE email = email and role = 'Admin' or role='SuperAdmin'
               ";
               $statement = $connect->prepare($query);
               $statement->execute(
@@ -32,7 +32,6 @@
                                 }else{
                                    
                                     $message = '<div class="alert alert-danger">Wrong Password</div>';
-                                    $message = '<div class="alert alert-danger">Youre not allowed to log in</div>'; 
                                 }
                               }else{
                                    $message = '<div class="alert alert-danger">Your Account has been disabled, please contact admin</div>';
@@ -68,7 +67,7 @@
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                <div class="navbar-header"> <a class="navbar-brand" href="#">BaguioCarRental</a> </div>
+                <div class="navbar-header"> <a class="navbar-brand" href="../admin/home.php">BaguioCarRental</a> </div>
             </div>
         </nav>
         <div class="login">

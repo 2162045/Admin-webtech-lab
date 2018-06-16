@@ -1,11 +1,13 @@
 <?php
+//index.php
 include("db.php");
+
 ?>
     <!DOCTYPE html>
     <html>
 
     <head>
-        <title>Admin Account Monitoring</title>
+        <title>Service Provider Account Monitoring</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,50 +20,48 @@ include("db.php");
             <div class="container-fluid">
                 <div class="navbar-header"> <a class="navbar-brand" href="home.php">BaguioCarRental</a> </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="home.php">Home</a></li>
+                    <li class="active"><a href="../admin/home.php">Home</a></li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Users<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="admin.php">Admins</a></li>
-                            <li><a href="client.php">Clients</a></li>
-                            <li><a href="sp.php">Service Providers</a></li>
+                            <li><a href="../admin/admin.php">Admins</a></li>
+                            <li><a href="../admin/client.php">Clients</a></li>
+                            <li><a href="../admin/sp.php">Service Providers</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Requests<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="adminreq.php">Admins</a></li>
-                            <li><a href="clientreq.php">Clients</a></li>
-                            <li><a href="spreq.php">Service Providers</a></li>
+                            <li><a href="../admin/adminreq.php">Admins</a></li>
+                            <li><a href="../admin/clientreq.php">Clients</a></li>
+                            <li><a href="../admin/spreq.php">Service Providers</a></li>
                         </ul>
                     </li>
-                    <li><a href="transaction.php">Transaction</a></li>
+                    <li><a href="../admin/transaction.php">Transaction</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                    <li><a href="../admin/logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
         <br />
         <div class="container">
-            <h2 style="color:white;margin-left:30px;" align="center">Admin Accounts Monitoring</h2>
+            <h2 style="color:white;margin-left:30px;" align="center">Service Provider Accounts Monitoring</h2>
             <br />
             <div class="row">
                 <table class="table table-striped table-bordered">
-                    <form action="result.php" method="POST">
+                    <br />
+                    <form action="spresult.php" method="POST">
                         <table style="width:10cm;" class="input-group">
                             <tr>
                                 <td>
-                                    <input type="text" class="form-control" placeholder="Search" name="firstName" required> </td>
+                                    <input type="text" class="form-control" placeholder="Search" name="username" required> </td>
                                 <td>
                                     <input class="btn btn-default" type="submit" name="submit"> </td>
                             </tr>
                         </table>
                     </form>
                     <br>
-                    <a class="col-md-10 "></a> <a href="signup.php" class="btn btn-success pull-right col-md-2">Add New Admin</a>
                     <div class="panel panel-default">
-                        <div class="panel-heading ">
-                            <h4>Admin Details</h4></div>
-                        <br>
+                        <div class="panel-heading ">Service Provider Details</div>
                         <div class="panel-body"> <span id="message"></span>
                             <div class="table-responsive" id="user_data"></div>
                             <script>
@@ -71,7 +71,7 @@ include("db.php");
                                     function load_user_data() {
                                         var action = 'fetch';
                                         $.ajax({
-                                            url: 'action.php'
+                                            url: 'sp-action.php'
                                             , method: 'POST'
                                             , data: {
                                                 action: action
@@ -88,7 +88,7 @@ include("db.php");
                                         $('#message').html('');
                                         if (confirm("Are you Sure you want to change status of this User?")) {
                                             $.ajax({
-                                                url: 'action.php'
+                                                url: 'sp-action.php'
                                                 , method: 'POST'
                                                 , data: {
                                                     id: id
